@@ -4,11 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Fuck</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div id="root">Not rendered</div>
     <script src="https://unpkg.com/react@16.9/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.9/umd/react-dom.development.js"></script>
+    <script>
+      const App = () => {
+        return React.createElement(
+          "div",
+          {},
+          React.createElement("h1", {}, "Hello bae")
+        );
+      };
+      ReactDOM.render(
+        React.createElement(App),
+        document.getElementById("root")
+      );
+    </script>
   </body>
 </html>
