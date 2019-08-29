@@ -1,0 +1,37 @@
+{
+  "name": "learn-basic-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jetaimefrc/learn-basic-react.git",
+  "author": "NhatDeepTrai <demonslight998@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore",
+    "dev": "parcel index.html"
+  },
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-html": "^6.0.0",
+    "husky": "^3.0.4",
+    "lint-staged": "^9.2.5",
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^1.18.2",
+    "prettier-eslint": "^9.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "yarn lint --fix",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
