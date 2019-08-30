@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
-const getColorRandom = () =>
-  '#' +
-  Math.random()
-    .toString(16)
-    .substr(-6)
+// prettier-ignore
+const getColorRandom = () => '#' + Math.random().toString(16).substr(-6)
 
 const ChangeColor = () => {
+  /**
+   * Chú ý: React Hook k được để ở trong 1 condition nào đó
+   */
   const [color, setColor] = useState(getColorRandom())
   return (
     <div>

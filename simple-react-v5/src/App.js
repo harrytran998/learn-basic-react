@@ -1,12 +1,13 @@
 import React from 'react'
 import { render } from 'react-dom'
-import SearchParams from './SearchParams'
+// import SearchParams from './SearchParams'
 import ChangeColor from './ChangeColor'
+import SearchPet from './SearchPet'
 
 const App = () => {
   return (
     <div>
-      <SearchParams />
+      <SearchPet />
       <ChangeColor />
     </div>
   )
