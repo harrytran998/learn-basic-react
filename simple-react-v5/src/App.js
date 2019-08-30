@@ -1,14 +1,13 @@
-import { createElement } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
-import Pet from './Pet'
+import SearchParams from './SearchParams'
 
 const App = () => {
-  return createElement('div', { id: 'insert-someAtributes' }, [
-    createElement('h1', {}, 'Hello bae'),
-    createElement(Pet, { name: 'Fuck', age: 20, breed: 'Alient' }),
-    createElement(Pet, { name: 'Fuck', age: 20, breed: 'Alient' }),
-    createElement(Pet, { name: 'Fuck', age: 20, breed: 'Alient' })
-  ])
+  return (
+    <div>
+      <SearchParams />
+    </div>
+  )
 }
 
-render(createElement(App), document.getElementById('root'))
+render(<App />, document.getElementById('root'))

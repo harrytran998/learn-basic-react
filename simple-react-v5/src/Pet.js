@@ -1,8 +1,11 @@
-import { createElement } from 'react'
+import React from 'react'
+
 export default function Pet({ name, age, breed }) {
-  return createElement('div', {}, [
-    createElement('h1', {}, name),
-    createElement('h2', {}, age),
-    createElement('h3', {}, breed)
-  ])
+  return (
+    <div>
+      <h1>{name}</h1>
+      <h1>{age}</h1>
+      <h1>{breed}</h1>
+    </div>
+  )
 }
