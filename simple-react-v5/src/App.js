@@ -6,7 +6,8 @@ import SearchPet from './SearchPet'
 
 const App = () => {
   return (
-    <div>
+    <div className="mt-5">
+      <h1>Hello</h1>
       <SearchPet />
       <ChangeColor />
     </div>

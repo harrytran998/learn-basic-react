@@ -1,6 +1,8 @@
 import React from 'react'
 import useDropDown from './UseDropDown'
 
+const Animal = ['Dog', 'Cat', 'Pig']
+
 const Pet = [
   {
     petName: 'A',
@@ -17,8 +19,7 @@ const Pet = [
 ]
 
 const SearchPet = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [petName, PetDropDown] = useDropDown('pet', 'dog', Pet)
+  const [petName, PetDropDown] = useDropDown('pet', 'dog', Animal)
   return (
     <div>
       <h1>Hello Pet</h1>

@@ -11,7 +11,9 @@ const ChangeColor = () => {
   return (
     <div>
       <h1 style={{ color }}>This color {color}</h1>
-      <button onClick={() => setColor(getColorRandom())}></button>
+      <button className="btn btn-lg btn-primary" onClick={() => setColor(getColorRandom())}>
+        Click to change color
+      </button>
     </div>
   )
 }
