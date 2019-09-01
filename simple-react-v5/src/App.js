@@ -1,12 +1,17 @@
 import React from 'react'
 import { render } from 'react-dom'
 import SearchPet from './SearchPet'
+import Details from './Details'
+import { Router, Link } from '@reach/router'
 
 const App = () => {
   return (
     <div className="mt-5">
       <h1>Hello</h1>
-      <SearchPet />
+      <Router>
+        <SearchPet path="/" />
+        <Details path="/details/:id" />
+      </Router>
     </div>
   )
 }

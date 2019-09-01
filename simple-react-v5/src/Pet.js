@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from '@reach/router'
 
 const Pet = props => {
   const { name, animal, breed, media, location, id } = props
@@ -9,15 +10,17 @@ const Pet = props => {
   }
 
   return (
-    <a href={`/details/${id}`} className="pet">
-      <div className="image-container">
-        <img src={hero} alt={name} />
+    <Link to={`/details/${id}`} className="pet">
+      <div className="d-flex justify-content-between py-3">
+        <div className="image-container">
+          <img src={hero} alt={name} />
+        </div>
+        <div className="info d-flex justify-content-between">
+          <h1 className="d-flex justify-center align-items-center">{name}</h1>
+          <h2 className="d-flex justify-center align-items-center">{`${animal.toUpperCase()} — ${breed} — ${location}`}</h2>
+        </div>
       </div>
-      <div className="info">
-        <h1>{name}</h1>
-        <h2>{`${animal} — ${breed} — ${location}`}</h2>
-      </div>
-    </a>
+    </Link>
   )
 }
 
