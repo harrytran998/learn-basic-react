@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import pet from '@frontendmasters/pet'
+// import Carousel from './Carousel' => Just for fun!
 
 class Details extends Component {
   state = { loading: true }
   // = UseEffect
   componentDidMount() {
     pet
-      .animal(Number(this.props.id))
+      .animal(+this.props.id)
       .then(({ animal }) => {
         this.setState({
           name: animal.name,
