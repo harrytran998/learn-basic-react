@@ -7,7 +7,6 @@ import { Router, Link } from '@reach/router'
 const App = () => {
   return (
     <div className="mt-5">
-      <h1>Hello</h1>
       <Router>
         <SearchPet path="/" />
         <Details path="/details/:id" />
