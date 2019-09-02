@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import pet from '@frontendmasters/pet'
 import ErrorBoundary from './ErrorBoundary'
 // import Carousel from './Carousel' => Just for fun!
+import ThemeContext from './ThemeContext'
 
 class Details extends Component {
   state = { loading: true }
@@ -35,7 +36,17 @@ class Details extends Component {
         <div className="pl-4">
           <h1 className="my-2">Pet name: {name}</h1>
           <h2 className="my-2">{`${type.toUpperCase()} — ${breed} — ${location}`}</h2>
-          <button className="btn btn-lg btn-primary my-2">Adopt {name} now!</button>
+          <ThemeContext.Consumer>
+            {/* Old structure 
+              {(themeHook) => (<button style={{ color: themeHook[0] }} className="btn btn-lg btn-primary my-2">Adopt {name} now!</button>)}
+            */}
+            {/* Using Destructure */}
+            {([theme]) => (
+              <button style={{ color: theme }} className="btn btn-lg btn-primary my-2">
+                Adopt {name} now!
+              </button>
+            )}
+          </ThemeContext.Consumer>
           <p className="my-2">{description}</p>
         </div>
       </div>
