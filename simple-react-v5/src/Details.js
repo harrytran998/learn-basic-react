@@ -3,15 +3,18 @@ import pet from '@frontendmasters/pet'
 import ErrorBoundary from './ErrorBoundary'
 // import Carousel from './Carousel' => Just for fun!
 import ThemeContext from './ThemeContext'
+import Modal from './Modal'
+import { navigate } from '@reach/router'
 
 class Details extends Component {
-  state = { loading: true }
+  state = { loading: true, showModal: false }
   // = UseEffect
   componentDidMount() {
     pet
       .animal(this.props.id)
       .then(({ animal }) => {
         this.setState({
+          url: animal.url,
           name: animal.name,
           type: animal.type,
           location: animal.contact.address.city,
@@ -24,12 +27,15 @@ class Details extends Component {
       })
       .catch(err => this.setState({ error: err }))
   }
+
+  toggleModal = () => this.setState({ showModal: !this.state.showModal })
+  adoptPet = () => navigate(this.state.url)
   // Every class component must have a render method
   render() {
     if (this.state.loading) {
       return <h1>loading … </h1>
     }
-    const { type, breed, location, description, media, name, height } = this.state
+    const { type, breed, location, description, media, name, height, showModal } = this.state
     return (
       <div className="d-flex justify-content-between">
         <img src={media} alt="Pet" style={{ height: height + '%' }} />
@@ -42,12 +48,27 @@ class Details extends Component {
             */}
             {/* Using Destructure */}
             {([theme]) => (
-              <button style={{ color: theme }} className="btn btn-lg btn-primary my-2">
+              <button onClick={this.toggleModal} style={{ color: theme }} className="btn btn-lg btn-primary my-2">
                 Adopt {name} now!
               </button>
             )}
           </ThemeContext.Consumer>
           <p className="my-2">{description}</p>
+          {showModal ? (
+            <Modal>
+              <div>
+                <h1>You want to adopt {name}?</h1>
+                <div>
+                  <button onClick={this.adoptPet} className="btn btn-lg btn-outline-primary">
+                    Yes!
+                  </button>
+                  <button onClick={this.toggleModal} className="btn btn-md btn-outline-warning">
+                    No, bae!
+                  </button>
+                </div>
+              </div>
+            </Modal>
+          ) : null}
         </div>
       </div>
     )
