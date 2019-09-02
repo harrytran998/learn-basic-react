@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import pet from '@frontendmasters/pet'
+import ErrorBoundary from './ErrorBoundary'
 // import Carousel from './Carousel' => Just for fun!
 
 class Details extends Component {
@@ -7,7 +8,7 @@ class Details extends Component {
   // = UseEffect
   componentDidMount() {
     pet
-      .animal(+this.props.id)
+      .animal(this.props.id)
       .then(({ animal }) => {
         this.setState({
           name: animal.name,
@@ -42,4 +43,16 @@ class Details extends Component {
   }
 }
 
-export default Details
+/**
+ * {...props} pass all props in the children component
+ * Ex here: {...props} = id={props.id}
+ * *** Should just wrap 1 component inside
+ * @param {*} props
+ */
+export default function DetailsWithErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      <Details {...props} />
+    </ErrorBoundary>
+  )
+}
